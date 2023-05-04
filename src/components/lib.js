@@ -1,9 +1,11 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled/macro";
+import * as colors from "../styles/colors";
+import * as mq from "../styles/media-queries";
 
 const Input = styled.input({
   borderRadius: "3px",
-  border: "1px solid #f1f1f4",
-  background: "#f1f2f7",
+  border: `1px solid ${colors.gray10}`,
+  background: colors.gray,
   padding: "8px 12px",
 });
 
@@ -14,12 +16,12 @@ const FormGroup = styled.div({
 
 const buttonVariants = {
   primary: {
-    background: `#3f51b5`,
-    color: "white",
+    background: colors.indigo,
+    color: colors.base,
   },
   secondary: {
-    background: "#f1f2f7",
-    color: "#434449",
+    background: colors.gray,
+    color: colors.text,
   },
 };
 const Button = styled.button(
@@ -35,7 +37,7 @@ const Button = styled.button(
 const ModalBackground = styled.div({
   width: "100vw",
   height: "100vh",
-  background: "rgba(200, 200, 200)",
+  background: colors.gray,
   position: "fixed",
   display: "flex",
   top: "0",
@@ -47,11 +49,15 @@ const ModalContainer = styled.div({
   width: "300px",
   height: "400px",
   borderRadius: "12px",
-  backgroundColor: "white",
-  boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+  backgroundColor: colors.base,
+  boxShadow: colors.boxShadow,
   display: "flex",
   flexDirection: "column",
   padding: "25px",
+  [mq.small]: {
+    width: "100%",
+    margin: "10vh auto",
+  },
 });
 
 export { Button, Input, FormGroup, ModalBackground, ModalContainer };
