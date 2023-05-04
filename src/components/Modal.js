@@ -1,21 +1,41 @@
-import React from "react";
-import "../styles/Modal-style.css";
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
+import { ModalBackground, ModalContainer } from "./lib";
 
 function Modal({ closeModal, title, children }) {
   return (
-    <div className="modalBackground">
-      <div className="modalContainer">
-        <div className="titleCloseBtn">
-          <button className="modalButton" onClick={() => closeModal("none")}>
+    <ModalBackground>
+      <ModalContainer>
+        <div
+          css={{
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <button
+            css={{
+              backgroundColor: "transparent",
+              border: "none",
+              fontSize: "25px",
+              cursor: "pointer",
+            }}
+            onClick={() => closeModal("none")}
+          >
             X
           </button>
         </div>
-        <div className="modalTitle">
+        <div
+          css={{
+            display: "inline-block",
+            textAlign: "center",
+          }}
+        >
           <h1>{title}</h1>
         </div>
         {children}
-      </div>
-    </div>
+      </ModalContainer>
+    </ModalBackground>
   );
 }
 

@@ -1,4 +1,11 @@
-export default function LoginForm({ onSubmit, buttonText }) {
+// The below line is known as a pragma, and it informs the transpiler (usually Babel) that the JSX
+// syntax should be transformed into Emotion's CSS-in-JS syntax.
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
+import { FormGroup, Input } from "./lib";
+
+export default function LoginForm({ onSubmit, submitButton }) {
   function handleSubmit(event) {
     event.preventDefault();
     const { username, password } = event.target.elements;
@@ -9,18 +16,28 @@ export default function LoginForm({ onSubmit, buttonText }) {
     });
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="username">username</label>
-        <input id="username" type="text" />
-      </div>
-      <div>
-        <label htmlFor="password">password</label>
-        <input id="password" type="password" />
-      </div>
-      <div>
-        <button type="submit">{buttonText}</button>
-      </div>
+    <form
+      css={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "stretch",
+        "> div": {
+          margin: "10px auto",
+          width: "100%",
+          maxWidth: "300px",
+        },
+      }}
+      onSubmit={handleSubmit}
+    >
+      <FormGroup>
+        <label htmlFor="username">Username</label>
+        <Input id="username" type="text" />
+      </FormGroup>
+      <FormGroup>
+        <label htmlFor="password">Password</label>
+        <Input id="password" type="password" />
+      </FormGroup>
+      <div>{submitButton}</div>
     </form>
   );
 }
