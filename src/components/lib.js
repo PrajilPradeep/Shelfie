@@ -1,6 +1,8 @@
 import styled from "@emotion/styled/macro";
 import * as colors from "../styles/colors";
 import * as mq from "../styles/media-queries";
+import { FaSpinner } from "react-icons/fa";
+import { keyframes } from "@emotion/react";
 
 const Input = styled.input({
   borderRadius: "3px",
@@ -34,6 +36,7 @@ const Button = styled.button(
   ({ variant = "primary" }) => buttonVariants[variant]
 );
 
+// Modal styles
 const ModalBackground = styled.div({
   width: "100vw",
   height: "100vh",
@@ -60,4 +63,17 @@ const ModalContainer = styled.div({
   },
 });
 
-export { Button, Input, FormGroup, ModalBackground, ModalContainer };
+//Spinner for form submission
+const spin = keyframes({
+  "0%": { transform: "rotate(0deg)" },
+  "100%": { transform: "rotate(360deg)" },
+});
+
+const Spinner = styled(FaSpinner)({
+  animation: `${spin} 1s linear infinite`,
+});
+
+Spinner.defaultProps = {
+  "aria-label": "loading",
+};
+export { Button, Input, FormGroup, ModalBackground, ModalContainer, Spinner };

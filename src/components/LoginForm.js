@@ -3,7 +3,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-import { FormGroup, Input } from "./lib";
+import { FormGroup, Input, Spinner } from "./lib";
 
 export default function LoginForm({ onSubmit, submitButton }) {
   function handleSubmit(event) {
@@ -37,7 +37,10 @@ export default function LoginForm({ onSubmit, submitButton }) {
         <label htmlFor="password">Password</label>
         <Input id="password" type="password" />
       </FormGroup>
-      <div>{submitButton}</div>
+      <div>
+        {submitButton}
+        <Spinner aria-label="loading" />
+      </div>
     </form>
   );
 }
